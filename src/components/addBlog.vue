@@ -6,12 +6,31 @@
       <input type="text" v-model.lazy="blog.title" required />
       <label>Blog Content:</label>
       <textarea v-model.lazy.trim="blog.content"></textarea>
+      <div id="checkboxes">
+        <label>Ninjas</label>
+        <input type="checkbox" value="ninjas" v-model="blog.categories"/>
+        <label>Wizards</label>
+        <input type="checkbox" value="wizards" v-model="blog.categories"/>
+        <label>Mario</label>
+        <input type="checkbox" value="mario" v-model="blog.categories"/>
+        <label>Cheese</label>
+        <input type="checkbox" value="cheese" v-model="blog.categories"/>
+        <label>Author:</label>
+        <select v-model="blog.author">
+          <option v-for="author in authors" v-bind:key="author.id">{{author}}</option>
+        </select>
+      </div>
     </form>
     <div id="preview">
       <h3>Preview Blog</h3>
       <p>Blog title: {{blog.title}}</p>
       <p>Blog content:</p>
-      <p>{{blog.content}}</p>
+      <p style="white-space: pre">{{blog.content}}</p>
+      <p>Blog Categories</p>
+      <ul>
+        <li v-for="category in blog.categories" v-bind:key="category.id">{{category}}</li>
+      </ul>
+      <p>Author: {{blog.author}}</p>
     </div>
   </div>
 </template>
@@ -22,8 +41,11 @@ export default {
     return {
       blog: {
         title: '',
-        content: ''
-      }
+        content: '',
+        categories: [],
+        author: ""
+      },
+      authors: ["The Net Ninja", "The Angular Avenger", "The Vue Vindcator"]
     }
   },
   methods: {
@@ -56,5 +78,12 @@ input[type="text"], textarea{
 }
 h3{
     margin-top: 10px;
+}
+#checkboxes input {
+  display: inline-block;
+  margin-right: 10px;
+}
+#checkboxes label {
+  display: inline-block;
 }
 </style>
