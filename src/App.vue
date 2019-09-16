@@ -1,5 +1,6 @@
 <template>
   <div>
+    <app-header></app-header>
     <!-- <add-blog></add-blog> -->
     <!-- <show-blogs></show-blogs> -->
     <!-- <list-blogs></list-blogs> -->
@@ -11,12 +12,14 @@
 import addBlog from "./components/addBlog";
 import showBlogs from "./components/showBlogs";
 import listBlogs from "./components/listBlogs";
+import header from "./components/header";
 
 export default {
   components: {
     'add-blog': addBlog,
     'show-blogs': showBlogs,
-    'list-blogs': listBlogs
+    'list-blogs': listBlogs,
+    'app-header': header
   },
   data () {
     return {
